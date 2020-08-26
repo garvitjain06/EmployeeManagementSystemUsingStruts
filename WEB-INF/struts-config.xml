@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+    <!DOCTYPE struts-config PUBLIC
+              "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+              "struts-config_1_1.dtd">
+
+<struts-config>
+	<form-beans>
+		
+		<form-bean
+		name="insertForm"
+		type="insert.EmployeeDetails"/>
+		<form-bean
+		name="updateForm"
+		type="update.EmployeeDetails"/>
+		<form-bean
+		name="deleteForm"
+		type="delete.EmployeeDetails"/>
+		<form-bean
+		name="displayForm"
+		type="display.EmployeeDetails"/>
+		
+	</form-beans>
+	 
+	<action-mappings> 
+	
+		<action path="/insert" forward="/jsp/insert.jsp"/>
+		<action
+			path="/PInsert"
+			type="insert.InsertAction"
+			name="insertForm"
+			scope="request"
+			validate="false"
+			input="/jsp/insert.jsp">
+			<forward
+				name="success"
+				path="/jsp/ProcessInsert.jsp"
+			/>
+			<forward
+				name="failure"
+				path="/jsp/error.jsp"
+			/>
+		</action>
+	</action-mappings>
+	<action-mappings> 
+	
+		<action path="/update" forward="/jsp/update.jsp"/>
+		<action
+			path="/PUpdate"
+			type="update.UpdateAction"
+			name="updateForm"
+			scope="request"
+			validate="false"
+			input="/jsp/update.jsp">
+			<forward
+				name="success"
+				path="/jsp/ProcessUpdate.jsp"
+			/>
+			<forward
+				name="failure"
+				path="/jsp/error.jsp"
+			/>
+		</action>
+	</action-mappings>
+	<action-mappings> 
+	
+		<action path="/delete" forward="/jsp/delete.jsp"/>
+		<action
+			path="/PDelete"
+			type="delete.DeleteAction"
+			name="deleteForm"
+			scope="request"
+			validate="false"
+			input="/jsp/delete.jsp">
+			<forward
+				name="success"
+				path="/jsp/ProcessDelete.jsp"
+			/>
+			<forward
+				name="failure"
+				path="/jsp/error.jsp"
+			/>
+		</action>
+	</action-mappings>
+	<action-mappings> 
+	
+		<action path="/display" forward="/jsp/display.jsp"/>
+		<action
+			path="/PDisplay"
+			type="display.DisplayAction"
+			name="displayForm"
+			scope="request"
+			validate="false"
+			input="/jsp/display.jsp">
+			<forward
+				name="success"
+				path="/jsp/ProcessDisplay.jsp"
+			/>
+			<forward
+				name="failure"
+				path="/jsp/error.jsp"
+			/>
+		</action>
+	</action-mappings>
+	<message-resources parameter="resources.application" null="false"/>
+</struts-config>
